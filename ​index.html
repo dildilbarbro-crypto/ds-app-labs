@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DS APP LABS - Mobile Application Development, Android App Development, and Digital Product Innovation." />
+  <title>DS APP LABS | Mobile Application Development</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --dark: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --light-bg: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      color: var(--text);
+      background-color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--white);
+      padding: 5.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.2);
+      color: #93c5fd;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(147, 197, 253, 0.3);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      border: 1px solid #475569;
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Sections */
+    section {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-alt {
+      background-color: var(--light-bg);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    /* Grids & Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      color: var(--dark);
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Apps Section */
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .app-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: #eff6ff;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      margin-bottom: 0.8rem;
+      width: fit-content;
+    }
+
+    .app-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .app-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact Section */
+    .contact-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 750px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-email {
+      display: inline-block;
+      margin: 1rem 0 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      background: #eff6ff;
+      border-radius: 8px;
+    }
+
+    .contact-email:hover {
+      background: #dbeafe;
+    }
+
+    .address-block {
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .address-block strong {
+      color: var(--dark);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #94a3b8;
+      padding: 2.2rem 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        display: none;
+      }
+      .hero {
+        padding: 4rem 1.2rem;
+      }
+      .contact-box {
+        padding: 1.8rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">DS APP <span>LABS</span></a>
+      <nav>
+        <a href="#what-we-do">What We Do</a>
+        <a href="#core-values">Core Values</a>
+        <a href="#our-apps">Our Apps</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="badge">Mobile Software &amp; Digital Innovation</span>
+      <h1>Building Reliable, Future-Ready Mobile Applications</h1>
+      <p>DS APP LABS designs, develops, and maintains high-quality Android applications focused on performance, usability, and everyday utility.</p>
+      <div class="btn-group">
+        <a href="#our-apps" class="btn btn-primary">Explore Our Apps</a>
+        <a href="#contact" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section id="what-we-do">
+    <div class="container">
+      <div class="section-header">
+        <h2>What We Do</h2>
+        <p>End-to-end mobile software engineering focused on clean design and dependable performance.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="icon-box">01</div>
+          <h3>Mobile Application Development</h3>
+          <p>Creating scalable, intuitive mobile applications tailored to solve real-world user needs.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">02</div>
+          <h3>Android App Development</h3>
+          <p>Building native Android experiences optimized for modern devices, speed, and stability.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">03</div>
+          <h3>Application Design and Development</h3>
+          <p>Combining thoughtful user interface design with clean, maintainable application architecture.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">04</div>
+          <h3>Digital Product Innovation</h3>
+          <p>Integrating modern tools and AI-powered capabilities to craft smarter digital products.</p>
+        </div>
+        <div class="card">
+          <div class="icon-box">05</div>
+          <h3>App Maintenance and Improvements</h3>
+          <p>Delivering regular updates, performance enhancements, and long-term reliability for our users.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Core Values -->
+  <section id="core-values" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Core Values</h2>
+        <p>The principles that guide every application we design, build, and publish.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Innovative Technology</h3>
+          <p>Adopting modern frameworks and intelligent technologies to deliver smarter mobile experiences.</p>
+        </div>
+        <div class="card">
+          <h3>Human-Centric Design</h3>
+          <p>Putting users first with simple, accessible, and clutter-free interfaces anyone can navigate.</p>
+        </div>
+        <div class="card">
+          <h3>Quality and Reliability</h3>
+          <p>Maintaining strict stability standards so our apps work smoothly when users need them most.</p>
+        </div>
+        <div class="card">
+          <h3>Continuous Improvement</h3>
+          <p>Listening to feedback and refining features with every release to keep raising the bar.</p>
+        </div>
+        <div class="card">
+          <h3>Future-Ready Solutions</h3>
+          <p>Engineering software built to adapt to evolving platforms, devices, and user expectations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Apps -->
+  <section id="our-apps">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Apps</h2>
+        <p>Discover mobile applications developed and published by DS APP LABS.</p>
+      </div>
+      <div class="grid">
+        <div class="card app-card">
+          <div>
+            <span class="app-tag">Productivity &amp; AI</span>
+            <h3>Ai Scanner Pro</h3>
+            <p>AI-powered document scanning, OCR text extraction, and PDF/Excel conversion designed for fast, everyday productivity.</p>
+          </div>
+          <a href="https://play.google.com/store/apps/details?id=com.dildilbarbro.aiscannerpro" target="_blank" rel="noopener noreferrer" class="app-link">View on Google Play &rarr;</a>
+        </div>
+        <div class="card app-card">
+          <div>
+            <span class="app-tag">Education &amp; AI</span>
+            <h3>Lingo AI</h3>
+            <p>Interactive AI language learning experience featuring multilingual support, quizzes, and daily streak tracking.</p>
+          </div>
+          <a href="https://play.google.com/store/apps/details?id=ai.lingo.app" target="_blank" rel="noopener noreferrer" class="app-link">View on Google Play &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact" class="section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>We are here to help with app support, feedback, and business enquiries.</p>
+      </div>
+      <div class="contact-box">
+        <p>For enquiries and support, contact us at:</p>
+        <a href="mailto:dsapplabs@gmail.com" class="contact-email">dsapplabs@gmail.com</a>
+        <div class="address-block">
+          <strong>DS APP LABS</strong>
+          Ward 7, Dil Dilbar Sah, Gauri Block, Ganguly, 768P+M3Q,<br />
+          Sitamarhi, Bihar 843326, India
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="#what-we-do">What We Do</a>
+      <a href="#core-values">Core Values</a>
+      <a href="#our-apps">Our Apps</a>
+      <a href="https://sites.google.com/view/ai-scanner-pro-/home" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+      <a href="mailto:dsapplabs@gmail.com">Support</a>
+    </div>
+    <p>&copy; 2026 DS APP LABS. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
